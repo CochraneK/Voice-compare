@@ -1,0 +1,9 @@
+<!-- miniprogram/subpackages/more/privacy/privacy.wxml -->
+<view class="doc">
+  <text class="h">隐私说明与数据使用</text>
+  <text class="p">1. 本小程序用于咨询师与来访者音色的相似度比对与性别分析。</text>
+  <text class="p">2. 录音仅在本轮比对中使用，服务端以内存态临时保存声纹特征，分析完成后立即清除，不写入磁盘、不留存原始音频、不留存声纹向量。</text>
+  <text class="p">3. 音色属于生物识别信息，我们仅在您明确同意后进行采集与分析，不会用于任何其他目的，也不会向第三方共享。</text>
+  <text class="p">4. 您可随时在系统设置中撤回录音权限。撤回后我们将无法继续提供比对功能。</text>
+  <text class="p">5. 分析结果为辅助参考，不构成任何医学或专业诊断结论。</text>
+</view>

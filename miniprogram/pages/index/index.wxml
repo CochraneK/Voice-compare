@@ -1,0 +1,50 @@
+<!-- pages/index/index.wxml — 治疗感首页 -->
+<view class="page-home">
+  <!-- Header -->
+  <view class="hero">
+    <view class="hero-line"></view>
+    <view class="hero-text">
+      <text class="hero-title">音色</text>
+      <text class="hero-title-sub">对话比对</text>
+    </view>
+    <text class="hero-desc">分别录入咨询师与来访者语音，生成双人比对报告与个人声音画像</text>
+    <view class="hero-line right"></view>
+  </view>
+
+  <!-- 咨询师卡片 -->
+  <view class="persona-card">
+    <view class="pc-status">
+      <view class="pc-dot {{counselorDone ? 'active' : ''}}"></view>
+      <view class="pc-info">
+        <text class="pc-role">咨询师</text>
+        <text class="pc-state">{{counselorDone ? '音色已采集' : '待录入音色'}}</text>
+      </view>
+    </view>
+    <view class="pc-desc">用于建立基准声音档案，作为比对参照</view>
+    <button class="btn-primary" bindtap="goRecord" data-cat="counselor">
+      {{counselorDone ? '重新录制' : '录制咨询师音色'}}
+    </button>
+  </view>
+
+  <!-- 来访者卡片 -->
+  <view class="persona-card">
+    <view class="pc-status">
+      <view class="pc-dot {{counselorDone ? '' : 'inactive'}}"></view>
+      <view class="pc-info">
+        <text class="pc-role">来访者</text>
+        <text class="pc-state">{{counselorDone ? '待录入音色' : '请先完成咨询师录制'}}</text>
+      </view>
+    </view>
+    <view class="pc-desc">录制后自动与咨询师音色比对，生成完整分析报告</view>
+    <button class="{{counselorDone ? 'btn-primary' : 'btn-ghost'}}" bindtap="goRecord" data-cat="client" disabled="{{!counselorDone}}">
+      录制来访者音色
+    </button>
+  </view>
+
+  <!-- 底部 -->
+  <view class="footer-row">
+    <text class="footer-link" bindtap="goPrivacy">隐私说明</text>
+    <text class="footer-dot">·</text>
+    <text class="footer-link" bindtap="goAbout">关于</text>
+  </view>
+</view>

@@ -1,0 +1,64 @@
+/* app.wxss — 薄荷绿治疗感全局样式 */
+page {
+  --c-brand:  #5aaf8f;
+  --c-brand-light: #8cc7a8;
+  --c-bg:      #f3f9f7;
+  --c-surface: #ffffff;
+  --c-muted:   #8b9b9f;
+  --c-text:    #2b3639;
+  --c-accent:  #d4ede6;
+  --c-positive: #5aaf8f;
+  --c-warn:    #d4a33f;
+
+  background: var(--c-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  color: var(--c-text);
+  font-size: 28rpx;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: var(--c-brand);
+  color: #fff;
+  border-radius: 48rpx;
+  font-size: 30rpx;
+  padding: 24rpx 0;
+  text-align: center;
+}
+button.btn-primary::after { border: none; }
+
+.btn-ghost {
+  background: rgba(212,237,230,0.35);
+  color: var(--c-brand);
+  border: 2rpx solid var(--c-brand);
+  border-radius: 48rpx;
+  font-size: 30rpx;
+  padding: 24rpx 0;
+  text-align: center;
+}
+button.btn-ghost::after { border: none; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--c-brand);
+  border: 2rpx solid var(--c-brand-light);
+  border-radius: 48rpx;
+  font-size: 28rpx;
+  padding: 18rpx 0;
+  text-align: center;
+}
+button.btn-outline::after { border: none; }
+
+.card {
+  background: var(--c-surface);
+  border-radius: 20rpx;
+  padding: 36rpx 32rpx;
+  margin: 20rpx 28rpx;
+  box-shadow: 0 2rpx 12rpx rgba(90,175,143,0.08);
+}
+
+.muted { color: var(--c-muted); font-size: 24rpx; }
+.tag { font-size: 22rpx; color: var(--c-muted); }
+.good { color: var(--c-positive); }
+.caution { color: var(--c-warn); }

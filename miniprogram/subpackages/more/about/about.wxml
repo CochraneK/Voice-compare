@@ -1,0 +1,6 @@
+<!-- miniprogram/subpackages/more/about/about.wxml -->
+<view class="doc">
+  <text class="h">关于本工具</text>
+  <text class="p">音色比对小程序：分别录入咨询师与来访者音色，生成双人比对报告与个人报告，含波形、音高曲线与文字解读。</text>
+  <text class="p">分析在云端完成，采用轻量声学特征（MFCC 统计量 + 基频 F0）进行相似度与性别判定，数据仅本次会话使用、不留存。</text>
+</view>

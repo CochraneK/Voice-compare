@@ -1,0 +1,83 @@
+<!-- pages/record/record.wxml -->
+<view class="page-record">
+  <!-- 隐私弹窗 -->
+  <view class="mask" wx:if="{{showPrivacy}}">
+    <view class="privacy-modal">
+      <text class="pm-title">隐私说明</text>
+      <text class="pm-body">我们将录制您的语音，用于音色相似度与性别特征分析。录音文件仅在本次比对中使用，不会上传至服务器永久存储，也不会分享给第三方。分析完成后自动清除。</text>
+      <view class="pm-btns">
+        <button class="btn-outline" bindtap="onDeclinePrivacy">不同意</button>
+        <button class="btn-primary" bindtap="onAgreePrivacy">同意并继续</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 主体内容 -->
+  <view class="content">
+    <!-- 角色标签 -->
+    <view class="role-tag">
+      <view class="rt-dot"></view>
+      <text class="rt-label">{{categoryLabel}}</text>
+    </view>
+
+    <!-- 计时显示 -->
+    <view class="time-display">
+      <text class="td-num">{{seconds}}</text>
+      <text class="td-unit">秒</text>
+    </view>
+
+    <!-- 波形装饰条 -->
+    <view class="wave-bar {{phase === 'recording' ? 'active' : ''}}">
+      <view wx:for="{{waveItems}}" wx:key="index" class="wb-seg" style="height:{{item}}rpx"></view>
+    </view>
+
+    <!-- 状态文案 -->
+    <view class="phase-hint">
+      <text wx:if="{{phase === 'idle'}}">点击下方按钮开始录音</text>
+      <text wx:if="{{phase === 'recording'}}">正在录音… 再次点击停止</text>
+      <text wx:if="{{phase === 'recorded'}}">录音完成，可回听或上传分析</text>
+    </view>
+  </view>
+
+  <!-- 底部操作区 -->
+  <view class="footer">
+    <!-- 回听（已录完显示） -->
+    <view class="replay-row" wx:if="{{phase === 'recorded'}}">
+      <view class="replay-btn" bindtap="togglePlay">
+        <view class="play-icon">
+          <view class="play-tri" wx:if="{{!playing}}"></view>
+          <view class="pause-bars" wx:if="{{playing}}">
+            <view class="bar"></view>
+            <view class="bar"></view>
+          </view>
+        </view>
+        <text class="replay-label">{{playing ? '暂停' : '回听'}}</text>
+      </view>
+      <view class="replay-time">
+        <text class="rt-cur">{{playSeconds}}s</text>
+        <text class="rt-sep"> / </text>
+        <text class="rt-tot">{{seconds}}s</text>
+      </view>
+    </view>
+
+    <!-- 主按钮区域 -->
+    <view class="main-action">
+      <!-- 重新录制 -->
+      <button class="btn-outline" bindtap="resetRecord" wx:if="{{phase === 'recorded'}}">重新录制</button>
+      <!-- 上传分析 -->
+      <button class="btn-primary upload-btn" bindtap="onUpload" wx:if="{{phase === 'recorded' && !uploading}}">
+        上传并分析
+      </button>
+      <view class="uploading-state" wx:if="{{phase === 'recorded' && uploading}}">
+        <text class="up-text">分析中…</text>
+      </view>
+      <!-- 录音/停止 按钮（大圆形） -->
+      <view class="record-control" bindtap="toggleRecord">
+        <view class="record-inner {{phase}}">
+          <view class="record-wave {{phase === 'recording' ? 'active' : ''}}"></view>
+        </view>
+        <text class="record-label">{{phase === 'idle' ? '开始录音' : (phase === 'recording' ? '停止录音' : '重新录制')}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/record/record",
+    "pages/report/report"
+  ],
+  "subpackages": [
+    {
+      "root": "subpackages/more",
+      "pages": [
+        "privacy/privacy",
+        "about/about"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#4a7c8f",
+    "navigationBarTitleText": "音色比对",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f3f7f8"
+  },
+  "tabBar": {
+    "color": "#8b9b9f",
+    "selectedColor": "#4a7c8f",
+    "backgroundColor": "#ffffff",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/report/report", "text": "报告" }
+    ]
+  },
+  "permission": {
+    "scope.record": {
+      "desc": "用于录制咨询师与来访者的语音，进行音色相似度与性别分析"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

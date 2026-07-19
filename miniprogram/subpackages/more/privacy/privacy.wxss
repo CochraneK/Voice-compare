@@ -1,0 +1,4 @@
+/* miniprogram/subpackages/more/privacy/privacy.wxss */
+.doc { padding: 32rpx; }
+.h { font-size: 34rpx; font-weight: 600; display: block; margin-bottom: 24rpx; }
+.p { font-size: 28rpx; color: #444; line-height: 1.7; display: block; margin-bottom: 20rpx; }

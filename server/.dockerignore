@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.wav
+counselor.wav
+client.wav
+make_sample.py
+.git/
+.gitignore
+README.md

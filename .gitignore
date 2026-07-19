@@ -1,0 +1,28 @@
+# WeChat Mini Program
+miniprogram/project.private.config.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# WorkBuddy
+.workbuddy/
+
+# Python
+server/__pycache__/
+server/*.pyc
+server/venv/
+
+# Audio samples
+server/samples/
+*.wav
+*.mp3
+
+# Docker
+*.tar
