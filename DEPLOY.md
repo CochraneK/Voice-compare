@@ -41,10 +41,10 @@
 2. 点「立即使用」→ 关联你刚注册的小程序
 3. 进入控制台 →「服务列表」→「新建服务」
    - 服务名：`voice-compare`
-   - 来源：**本地代码** 或 **代码仓库**（推荐先把 `server/` 文件夹传上去）
+   - 来源：**本地代码** 或 **代码仓库**（Dockerfile 在仓库根目录，直接上传整个仓库即可）
 4. 部署设置：
    - 监听端口填 `9000`（和 Dockerfile 里一致）
-   - 上传方式：选「文件夹上传」，把项目里的 `server/` 整个传上去（含 Dockerfile）
+   - 上传方式：选「文件夹上传」，把整个项目仓库传上去（含根目录的 Dockerfile）
 5. 点「发布」等 1~2 分钟，构建完成
 6. 发布成功后，在服务详情里找到 **公网访问域名**，形如：
    `https://voice-compare-xxx.ap-shanghai.run.tcloudbase.com`
@@ -59,10 +59,10 @@
 如果想完全免费、且不关联小程序：
 
 1. 打开 https://cnb.cool/ → 注册账号（微信扫码即可）
-2. 新建组织 → 新建仓库 → 把 `server/` 文件夹内容推上去（或用 WebIDE 上传）
-3. 在 WebIDE 终端确认服务能起：`uvicorn main:app --host 0.0.0.0 --port 8000`
-4. 在底部 **PORTS 面板** 添加 8000 端口 → CNB 会生成一个公网 URL，形如：
-   `https://xxxx-8000.cnb.run`
+2. 新建组织 → 新建仓库 → 把整个项目仓库推上去（或用 WebIDE 上传）
+3. 在 WebIDE 终端确认服务能起：`uvicorn main:app --host 0.0.0.0 --port 9000`
+4. 在底部 **PORTS 面板** 添加 9000 端口 → CNB 会生成一个公网 URL，形如：
+   `https://xxxx-9000.cnb.run`
 5. 这个 HTTPS 域名同样可加进小程序白名单。
 
 > CNB 免费额度大，但**开发环境会休眠**（一段时间不访问会停），不适合长期稳定服务。做演示和调试够用，正式用建议转方案 A。
@@ -133,7 +133,7 @@ baseUrl: 'https://voice-compare-xxx.ap-shanghai.run.tcloudbase.com'
 | `url not in domain list` | 域名没加白名单 | 见第五步第 2 点，去公众平台加 |
 | `request:fail ssl hand shake error` | 域名不是 HTTPS | 必须用云托管/CNB 给的 https 域名 |
 | 录音没反应 | 没授权 scope.record | 首次会弹授权，或在手机设置里开 |
-| 上传后 500 | 后端没起来/端口不对 | 看云托管日志，确认端口 8000、Dockerfile 正常 |
+| 上传后 500 | 后端没起来/端口不对 | 看云托管日志，确认端口 9000、Dockerfile 正常 |
 
 ---
 
@@ -141,7 +141,7 @@ baseUrl: 'https://voice-compare-xxx.ap-shanghai.run.tcloudbase.com'
 
 ```
 1. mp.weixin.qq.com 注册个人小程序 → 拿 AppID
-2. cloud.weixin.qq.com 开通云托管 → 上传 server/ → 拿 HTTPS 域名
+2. cloud.weixin.qq.com 开通云托管 → 上传整个项目 → 拿 HTTPS 域名
 3. miniprogram/app.js 改 baseUrl = 你的域名
 4. 公众平台「服务器域名」加白名单（uploadFile + request 两栏）
 5. 下微信开发者工具 → 导入 miniprogram → 预览 → 手机扫码测
