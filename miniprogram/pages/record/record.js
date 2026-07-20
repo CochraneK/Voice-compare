@@ -157,26 +157,34 @@ Page({
   },
 
   async onUpload() {
-    if (!this.tempFilePath || this.data.uploading) return;
+    if (!this.data.tempFilePath || this.data.uploading) return;
     this.setData({ uploading: true });
     wx.showLoading({ title: '分析中…' });
     try {
       const res = await uploadStep(this.data.tempFilePath, this.data.category, this.data.token);
       wx.hideLoading();
       this.setData({ uploading: false });
+      // 防御：res 不符合预期时给出友好提示
+      if (!res || typeof res !== 'object') {
+        wx.showToast({ title: '服务器返回异常，请重试', icon: 'none' });
+        return;
+      }
       if (this.data.category === 'counselor') {
-        app.globalData.sessionToken = res.token;
+        if (!app.globalData) app.globalData = {};
+        app.globalData.sessionToken = res.token || '';
         app.globalData.counselorDone = true;
         wx.showToast({ title: '咨询师音色已采集', icon: 'success' });
         setTimeout(() => wx.navigateBack(), 900);
       } else {
+        if (!app.globalData) app.globalData = {};
         app.globalData.reportData = res;
         wx.switchTab({ url: '/pages/report/report' });
       }
     } catch (err) {
       wx.hideLoading();
       this.setData({ uploading: false });
-      wx.showToast({ title: (err && err.message) || '分析失败，请检查网络', icon: 'none' });
+      const msg = err && err.message ? err.message : '分析失败，请检查网络';
+      wx.showToast({ title: msg, icon: 'none' });
     }
   },
 
