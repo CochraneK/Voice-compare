@@ -8,6 +8,9 @@ RUN apt-get update \
 
 WORKDIR /app
 
+# 环境变量：强制平台使用 80 端口（覆盖 $PORT）
+ENV PORT=80
+
 # 安装 Python 依赖
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
