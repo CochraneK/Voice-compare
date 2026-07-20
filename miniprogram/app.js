@@ -3,7 +3,7 @@ App({
   globalData: {
     // ⚠️ 替换为你的 HTTPS 域名，并在微信公众平台「开发管理-服务器域名」中
     // 将 uploadFile 合法域名、request 合法域名都加上该域名（否则真机失败）
-    baseUrl: 'https://<YOUR_CLOUD_HOST_DOMAIN>',
+    baseUrl: 'https://flask-txdz-284276-10-1455787640.sh.run.tcloudbase.com',
 
     // 两步比对的内存态（不落盘，仅本次会话）
     sessionToken: '',        // 咨询师录音后由后端返回
