@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 复制业务代码
 COPY . .
 
-# 云托管要求监听 9000
-EXPOSE 9000
+# 云托管要求监听 80 端口（probe 使用 80）
+EXPOSE 80
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
